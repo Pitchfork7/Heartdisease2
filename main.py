@@ -8,6 +8,8 @@ import random
 
 import groq
 
+import sys
+
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
 
 groqclient = groq.Groq(api_key = "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")
@@ -80,6 +82,13 @@ async def on_ready():
 @bot.tree.command(name="how_are_you", description="Check in on Drew (debug stuff)")
 async def how_are_you(interaction: discord.Interaction):
     await interaction.response.send_message(f"To anyone using this bot, this is debug stuff, prob not useful to you! Information stuff: User {bot.user}, ID: {bot.user.id}, Channel {interaction.channel.name}, Perms: {interaction.app_permissions}. This message was called by {interaction.user.global_name} or {interaction.user.name}")
+
+bot.tree.command(name="time_for_bed", description="Ask Drew to sleep (shut down bot)")
+async def time_for_bed(interaction: discord.Interaction):
+    await interaction.response.send_message("Zzz")
+    sys.exit()
+
+
 
 @bot.tree.command(name="talk", description="send heartdisease2 a message")
 @app_commands.describe(user_input="The message you want to send to Heartdisease2")
