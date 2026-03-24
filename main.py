@@ -6,11 +6,11 @@ import asyncio
 
 import random
 
-from ddgs import DDGS
+import groq
 
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
 
-
+groqclient = Groq(api_key = "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")
 
 
 
@@ -36,10 +36,18 @@ def messageai(wuttosend, username="Unknown"):
         wuttosend = f"instructions: {ifd} {wuttosend}"
         full_prompt = wuttosend
 
+        chat_completion = groqclient.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": full_prompt,
+                }
+            ],
+            model="openai/gpt-oss-20b",
+        )
 
-        with DDGS() as ddgs:
-            results = ddgs.chat_completions(full_prompt, model="gpt-4o-mini")
-            return results
+        return chat_completion.choices[0].message.content
+
 
     except Exception as e:
         print(f"AI chat error: {e}")
