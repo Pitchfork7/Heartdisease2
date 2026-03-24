@@ -17,7 +17,7 @@ ai = DuckAI()
 #some varible stuff :0
 
 # not because im dumb asf, ifd is instructions for duckduck ai
-drewsaid = []
+drewsaid = ["Butttttt I'd be down to play around 9", "ima be hoping on rivals today", "WE ARE NOT NOT GOING TO PLAY AMONG US RIGHT NOW", "PLEASE AND THANK YOU", "WEEEE are playing among us", "Thats gay", "I LOVE BUNNYS", "GET ON NOW PLZ", "anyone wanna play among us????????????", "67", "no", "ima beat you", "No", "Lowkey", "Hey twin play among us instead", "Oh wait its only been 10 minutes", "THATS SO TUFF", "Ill be down now", "and ive been sleeping all day soooooo", "oh yeah, i forgot about that"]
 
 reels = ["https://www.instagram.com/reel/DWHQgBLEYV4/?igsh=dHF0b2cxdWhvYjVm", "https://www.instagram.com/reel/DWPmkBNv--p/?igsh=MXZob25zd3YyNnFvcQ==", "https://www.instagram.com/reel/DWO7GubjFUs/?igsh=MW52enVvYjN3M243Zw==", "https://www.instagram.com/reel/DWN82MkCDD9/?igsh=czg4emh1anp1d2Vh", "https://www.instagram.com/reel/DWMxxNoARsl/?igsh=MWs4eDFqNWVtMDAwZA==", "https://www.instagram.com/reel/DWRA9k6DNLs/?igsh=czhteml6OHc2em0x", "https://www.instagram.com/reel/DWBIFS2Ei4L/?igsh=MXN0dmNsa2I5czNydw==", "https://www.instagram.com/reel/DWPaA-SCc0u/?igsh=MWZxYWYybW5leW5vbA=="]
 lenreel = len(reels)
