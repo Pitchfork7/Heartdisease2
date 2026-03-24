@@ -10,7 +10,7 @@ import groq
 
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
 
-groqclient = Groq(api_key = "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")
+groqclient = groq.Groq(api_key = "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")
 
 
 
