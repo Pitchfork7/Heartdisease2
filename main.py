@@ -6,7 +6,7 @@ import asyncio
 
 import random
 
-import ddgs
+from ddgs import DDGS
 
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
 
@@ -38,7 +38,7 @@ def messageai(wuttosend, username="Unknown"):
 
 
         with DDGS() as ddgs:
-            results = ddgs.chat(full_prompt, model="gpt-4o-mini")
+            results = ddgs.chat_completions(full_prompt, model="gpt-4o-mini")
             return results
 
     except Exception as e:
