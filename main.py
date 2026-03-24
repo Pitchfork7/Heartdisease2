@@ -9,6 +9,14 @@ from duckai import DuckAI
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
 ai = DuckAI()
 
+
+
+
+#some varible stuff :0
+reels = ["", ""]
+
+tube = ["", "", "", "", "", "", "", "", "", "", "", ""]
+
 def messageai(wuttosend):
     response = ai.chat(str(wuttosend), model="gpt-4o-mini")
     return response
