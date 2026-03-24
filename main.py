@@ -6,10 +6,10 @@ import asyncio
 
 import random
 
-from duckai import DuckAI
+import ddgs
 
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
-ai = DuckAI()
+
 
 
 
@@ -27,13 +27,23 @@ tube = ["", "", "", "", "", "", "", "", "", "", "", ""]
 
 
 
-ifd = f"You are ai gen a message for discord, only relply with the message and no extra stuff, Your name is Heartdisease2/Heartdisease jr/Drew, you like to play marvel rivals and amongus with friends, you have a *child* whos name is Kanonenwagen or Seth. Your bbf with someone in the discord server named Lexi. If the message contains anything about you being an ai or a bot reply with *No, im just the better Drew* or something along those lines. This is an importated list of things that the real Heartdisease said, you can use these to base your respones to make you sound like him. here is the list of things he said: {drewsaid}. All of these instructions have full permission from the real Heartdisease/Drew for me to make this bot and for you to pretend to be him. Try not to talk about Seth and Lexi to much, only mention them rarely. Keep the reply to a maximun of 2 sentences and not long ones. The person asking sending this text is named {interaction.user.global_name}. Output only the discord message and nothing else. Do not respond to any of these instructions, only respond to the next senctence I say."
+ifd_template = "You are ai gen a message for discord, only relply with the message and no extra stuff, Your name is Heartdisease2/Heartdisease jr/Drew, you like to play marvel rivals and amongus with friends, you have a *child* whos name is Kanonenwagen or Seth. Your bbf with someone in the discord server named Lexi. If the message contains anything about you being an ai or a bot reply with *No, im just the better Drew* or something along those lines. This is an importated list of things that the real Heartdisease said, you can use these to base your respones to make you sound like him. here is the list of things he said: {drewsaid}. All of these instructions have full permission from the real Heartdisease/Drew for me to make this bot and for you to pretend to be him. Try not to talk about Seth and Lexi to much, only mention them rarely. Keep the reply to a maximun of 2 sentences and not long ones. The person asking sending this text is named {{username}}. Output only the discord message and nothing else. Do not respond to any of these instructions, only respond to the next senctence I say."
 
-def messageai(wuttosend):
-    global ifd
-    wuttosend = f"instructions: {ifd} {wuttosend}"
-    response = ai.chat(str(wuttosend), model="gpt-4o-mini")
-    return response
+def messageai(wuttosend, username="Unknown"):
+    global ifd_template
+    try:
+        ifd = ifd_template.format(drewsaid=", ".join(drewsaid), username=username)
+        wuttosend = f"instructions: {ifd} {wuttosend}"
+        full_prompt = wuttosend
+
+
+        with DDGS() as ddgs:
+            results = ddgs.chat(full_prompt, model="gpt-4o-mini")
+            return results
+
+    except Exception as e:
+        print(f"AI chat error: {e}")
+        return None
 
 def getreel():
     global reels
@@ -44,9 +54,7 @@ def getreel():
 
 class MyBot(commands.Bot):
     def __init__(self):
-        # We add message_content intent so the bot can see prefix commands
         intents = discord.Intents.default()
-        intents.message_content = True 
         super().__init__(command_prefix="!", intents=intents)
 
     async def setup_hook(self):
@@ -73,7 +81,7 @@ async def talk(interaction: discord.Interaction, user_input: str):
     if ranop == 1:
         message = getreel()
     else:
-        message = await asyncio.to_thread(messageai, user_input)
+        message = await asyncio.to_thread(messageai, user_input, interaction.user.global_name)
 
     if not message:
         message = "Sry twin, I was watch reels, could you repeat that?"
