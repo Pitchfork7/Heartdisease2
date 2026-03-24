@@ -61,9 +61,13 @@ async def talk(interaction: discord.Interaction, user_input: str):
     await interaction.response.defer()
     ranop = random.randint(1, 10)
     if ranop == 1:
-        getreel()
+        message = getreel()
     else:
         message = await asyncio.to_thread(messageai, user_input)
-        await interaction.followup.send(message)
+
+    if not message:
+        message = "Sry twin, I was watch reels, could you repeat that?"
+    
+    await interaction.followup.send(message)
 
 bot.run(TOKEN)
