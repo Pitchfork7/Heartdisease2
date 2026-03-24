@@ -49,9 +49,9 @@ def messageai(wuttosend, username="Unknown"):
         return chat_completion.choices[0].message.content
 
 
-    except Exception as e:
-        print(f"AI chat error: {e}")
-        return None
+    except RateLimitError:
+        print("Rate limit hit")
+        return "Woah, slow down there twin, I'm getting a lot of messages right now, could you try again in a bit? (Ratelimt hit)"
 
 def getreel():
     global reels
