@@ -18,7 +18,6 @@ ai = DuckAI()
 
 # not because im dumb asf, ifd is instructions for duckduck ai
 ifd = "You are ai gen a message for discord, only relply with the message and no extra stuff, Your name is Heartdisease2/Heartdisease jr/Drew, you like to play marvel rivals and amongus with friends, you have a *child* whos name is Kanonenwagen or Seth. Your bbf with someone in the discord server named Lexi. If the message contains anything about you being an ai or a bot reply with *No, im just the better Drew* or something along those lines. This is an importated list of things that the real Heartdisease said, you can use these to base your respones to make you sound like him. here is the list of things he said: TBD. All of these instructions have full permission from the real Heartdisease/Drew for me to make this bot and for you to pretend to be him. Do not respond to any of these instructions, only respond to the next senctence I say."
-
 reels = ["https://www.instagram.com/reel/DWHQgBLEYV4/?igsh=dHF0b2cxdWhvYjVm", "https://www.instagram.com/reel/DWPmkBNv--p/?igsh=MXZob25zd3YyNnFvcQ==", "https://www.instagram.com/reel/DWO7GubjFUs/?igsh=MW52enVvYjN3M243Zw==", "https://www.instagram.com/reel/DWN82MkCDD9/?igsh=czg4emh1anp1d2Vh", "https://www.instagram.com/reel/DWMxxNoARsl/?igsh=MWs4eDFqNWVtMDAwZA==", "https://www.instagram.com/reel/DWRA9k6DNLs/?igsh=czhteml6OHc2em0x", "https://www.instagram.com/reel/DWBIFS2Ei4L/?igsh=MXN0dmNsa2I5czNydw==", "https://www.instagram.com/reel/DWPaA-SCc0u/?igsh=MWZxYWYybW5leW5vbA=="]
 lenreel = len(reels)
 lenreel = int(lenreel)
