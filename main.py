@@ -4,6 +4,8 @@ from discord.ext import commands
 
 import asyncio
 
+import random
+
 from duckai import DuckAI
 
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
@@ -14,12 +16,21 @@ ai = DuckAI()
 
 #some varible stuff :0
 reels = ["https://www.instagram.com/reel/DWHQgBLEYV4/?igsh=dHF0b2cxdWhvYjVm", "https://www.instagram.com/reel/DWPmkBNv--p/?igsh=MXZob25zd3YyNnFvcQ==", "https://www.instagram.com/reel/DWO7GubjFUs/?igsh=MW52enVvYjN3M243Zw==", "https://www.instagram.com/reel/DWN82MkCDD9/?igsh=czg4emh1anp1d2Vh", "https://www.instagram.com/reel/DWMxxNoARsl/?igsh=MWs4eDFqNWVtMDAwZA==", "https://www.instagram.com/reel/DWRA9k6DNLs/?igsh=czhteml6OHc2em0x", "https://www.instagram.com/reel/DWBIFS2Ei4L/?igsh=MXN0dmNsa2I5czNydw==", "https://www.instagram.com/reel/DWPaA-SCc0u/?igsh=MWZxYWYybW5leW5vbA=="]
-
+lenreel = len(reels)
+lenreel = int(lenreel)
+lenreel = lenreel - 1
 tube = ["", "", "", "", "", "", "", "", "", "", "", ""]
 
 def messageai(wuttosend):
     response = ai.chat(str(wuttosend), model="gpt-4o-mini")
     return response
+
+def getreel():
+    global reels
+    global lenreel
+    num = random.randint(0, lenreel)
+    reelgot = reels[num]
+    return reelgot
 
 class MyBot(commands.Bot):
     def __init__(self):
@@ -48,7 +59,11 @@ async def how_are_you(interaction: discord.Interaction):
 @app_commands.describe(user_input="The message you want to send to Heartdisease2")
 async def talk(interaction: discord.Interaction, user_input: str):
     await interaction.response.defer()
-    message = await asyncio.to_thread(messageai, user_input)
-    await interaction.followup.send(message)
+    ranop = random.randint(1, 10)
+    if ranop == 1:
+        getreel()
+    else:
+        message = await asyncio.to_thread(messageai, user_input)
+        await interaction.followup.send(message)
 
 bot.run(TOKEN)
