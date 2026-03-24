@@ -3,6 +3,11 @@ from discord import app_commands
 from discord.ext import commands
 
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
+ai = DuckAI()
+
+def messageai(wuttosend):
+    response = ai.chat(str(wuttosend), model="gpt-4o-mini")
+    return response
 
 class MyBot(commands.Bot):
     def __init__(self):
@@ -28,7 +33,9 @@ async def drewhi(interaction: discord.Interaction):
     await interaction.response.send_message("Hi there!")
 
 @bot.tree.command(name="talk", description="send heartdisease2 a message")
-async def drewhi(interaction: discord.Interaction):
-    await interaction.response.send_message("message recieved")
+@app_commands.describe(user_input="The message you want to send to Heartdisease2")
+async def talk(interaction: discord.Interaction, user_input: str):
+    await interaction.response.defer()
+    await interaction.response.send_message(messageai(user_input))
 
 bot.run(TOKEN)
