@@ -2,6 +2,8 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
+import asyncio
+
 from duckai import DuckAI
 
 TOKEN = "MTQ4NTc5MjY2NzQ2MzA1NzQwOA.GlXf4k.HyPdJHDluwoR6gNVeoD2TafW2mZNzTbiwIQBHY"
@@ -38,6 +40,7 @@ async def drewhi(interaction: discord.Interaction):
 @app_commands.describe(user_input="The message you want to send to Heartdisease2")
 async def talk(interaction: discord.Interaction, user_input: str):
     await interaction.response.defer()
-    await interaction.response.send_message(messageai(user_input))
+    message = await asyncio.to_thread(messageai, user_input)
+    await interaction.followup.send(message)
 
 bot.run(TOKEN)
