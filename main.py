@@ -32,9 +32,9 @@ bot = MyBot()
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
 
-@bot.tree.command(name="drewhi", description="Say hi")
-async def drewhi(interaction: discord.Interaction):
-    await interaction.response.send_message("Hi there!")
+@bot.tree.command(name="how_are_you", description="Check in on Drew (debug stuff)")
+async def how_are_you(interaction: discord.Interaction):
+    await interaction.response.send_message(f"To anyone using this bot, this is debug stuff, prob not useful to you! Information stuff: User {bot.user}, ID: {bot.user.id}, Channel {interaction.channel.name}, Perms: {interaction.app_permissions}. This message was called by {interaction.user.global_name} or {interaction.user.name}")
 
 @bot.tree.command(name="talk", description="send heartdisease2 a message")
 @app_commands.describe(user_input="The message you want to send to Heartdisease2")
